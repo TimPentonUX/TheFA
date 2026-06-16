@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Referee Feedback — Prototypes</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Archivo:wght@600;700;800&display=swap">
+<style>
+  :root {
+    --navy: #011E41;
+    --blue: #0068B2;
+    --ink: #1a2230;
+    --grey: #5b6472;
+    --line: #e6e8ec;
+    --bg: #f4f5f7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Hanken Grotesk", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .head {
+    background: var(--navy);
+    color: #fff;
+    padding: 56px 32px 52px;
+  }
+  .head-inner { max-width: 920px; margin: 0 auto; }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #8fb6dd;
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: "Archivo", "Hanken Grotesk", sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 1.05;
+    margin: 0 0 12px;
+  }
+  .lede { font-size: 17px; line-height: 1.55; color: #c8d4e2; max-width: 560px; margin: 0; }
+  main { max-width: 920px; margin: -28px auto 64px; padding: 0 32px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 26px 24px 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(1,30,65,.12);
+    border-color: #cdd6e1;
+  }
+  .tag {
+    align-self: flex-start;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: #eaf3fb;
+    border-radius: 100px;
+    padding: 5px 12px;
+    margin-bottom: 16px;
+  }
+  .card h2 { font-size: 22px; font-weight: 700; margin: 0 0 8px; color: var(--navy); }
+  .card p { font-size: 15px; line-height: 1.5; color: var(--grey); margin: 0 0 22px; }
+  .go {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--blue);
+  }
+  .go svg { transition: transform .15s ease; }
+  .card:hover .go svg { transform: translateX(3px); }
+  footer { max-width: 920px; margin: 0 auto; padding: 0 32px 56px; color: var(--grey); font-size: 13px; }
+</style>
+</head>
+<body>
+  <header class="head">
+    <div class="head-inner">
+      <p class="eyebrow">The FA · Regulate</p>
+      <h1>Referee Feedback</h1>
+      <p class="lede">Three prototype directions for clubs rating match officials. Open any one to walk the flow — built for usability testing and stakeholder review.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid">
+      <a class="card" href="express.html">
+        <span class="tag">Express</span>
+        <h2>Talk once, we draft it</h2>
+        <p>Speak about the game for 30 seconds; the report and suggested scores are drafted for you to check and submit.</p>
+        <span class="go">Open prototype
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+      <a class="card" href="guided.html">
+        <span class="tag">Guided</span>
+        <h2>Step by step</h2>
+        <p>Answer one prompt per area — decisions, control, communication — with a clear scale and short notes as you go.</p>
+        <span class="go">Open prototype
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+      <a class="card" href="mobile.html">
+        <span class="tag">Mobile</span>
+        <h2>Quick-fill from the stands</h2>
+        <p>A phone-first flow: tap a score for each area and speak your thoughts — a full report in under a minute.</p>
+        <span class="go">Open prototype
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+    </div>
+  </main>
+
+  <footer>Prototypes — not production. Best viewed on desktop, except the Mobile version.</footer>
+</body>
+</html>
