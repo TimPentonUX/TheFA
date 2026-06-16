@@ -29,6 +29,7 @@
     padding: 56px 32px 52px;
   }
   .head-inner { max-width: 920px; margin: 0 auto; }
+  .crest { display: block; height: 46px; width: auto; margin: 0 0 20px; }
   .eyebrow {
     font-size: 13px;
     font-weight: 600;
@@ -90,10 +91,49 @@
   .card:hover .go svg { transform: translateX(3px); }
   footer { max-width: 920px; margin: 0 auto; padding: 0 32px 56px; color: var(--grey); font-size: 13px; }
 </style>
+
+<style>
+#rf-gate{position:fixed;inset:0;z-index:2147483647;background:#011E41;display:flex;align-items:center;justify-content:center;font-family:"Hanken Grotesk",-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+#rf-gate .rfg-box{width:330px;max-width:88vw;text-align:center;color:#fff;padding:0 16px;margin:0}
+#rf-gate h2{font-family:"Archivo","Hanken Grotesk",sans-serif;font-weight:800;font-size:24px;margin:0 0 8px;letter-spacing:.01em}
+#rf-gate p{font-size:14px;color:#9fb6d0;margin:0 0 22px;line-height:1.5}
+#rf-gate input{width:100%;box-sizing:border-box;height:48px;padding:0 14px;border-radius:10px;border:1px solid #28456b;background:#0a2b50;color:#fff;font-size:15px;outline:none}
+#rf-gate input:focus{border-color:#3b8fd6;box-shadow:0 0 0 3px rgba(59,143,214,.25)}
+#rf-gate button{margin-top:12px;width:100%;height:48px;border:none;border-radius:10px;background:#0068B2;color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}
+#rf-gate button:hover{background:#0076c9}
+#rf-gate .rfg-err{margin-top:14px;font-size:13px;color:#ff8d8d;visibility:hidden}
+#rf-gate .rfg-err.show{visibility:visible}
+</style>
+<script>
+(function(){
+  var HASH='544aaf6605afeafc7640a06a740c1ff92ae88d93467c7263f0477066764a2614';
+  var KEY='rf_gate_ok';
+  function authed(){try{return sessionStorage.getItem(KEY)==='1';}catch(e){return false;}}
+  function sha(t){return crypto.subtle.digest('SHA-256',new TextEncoder().encode(t)).then(function(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return('0'+x.toString(16)).slice(-2);}).join('');});}
+  function mount(){
+    if(authed())return;
+    if(document.getElementById('rf-gate'))return;
+    var g=document.createElement('div');g.id='rf-gate';
+    g.innerHTML='<form class="rfg-box"><h2>Referee Feedback</h2><p>Enter the password to view the prototypes.</p><input type="password" autocomplete="off" placeholder="Password" aria-label="Password"><button type="submit">Enter</button><div class="rfg-err">That password isn\'t right — try again.</div></form>';
+    document.body.appendChild(g);
+    var form=g.querySelector('form'),input=g.querySelector('input'),err=g.querySelector('.rfg-err');
+    setTimeout(function(){try{input.focus();}catch(e){}},30);
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      sha(input.value).then(function(h){
+        if(h===HASH){try{sessionStorage.setItem(KEY,'1');}catch(e){}g.remove();}
+        else{err.classList.add('show');input.select();}
+      });
+    });
+  }
+  if(document.body)mount();else document.addEventListener('DOMContentLoaded',mount);
+})();
+</script>
 </head>
 <body>
   <header class="head">
     <div class="head-inner">
+      <img class="crest" src="assets/fa-crest-white.png" alt="The FA" width="46" height="46">
       <p class="eyebrow">The FA · Regulate</p>
       <h1>Referee Feedback</h1>
       <p class="lede">Three prototype directions for clubs rating match officials. Open any one to walk the flow — built for usability testing and stakeholder review.</p>
